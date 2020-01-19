@@ -1,1 +1,392 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+/* 1. base */
+html {
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: unset;
+}
 
+a {
+  color: currentColor;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* 2. Shared */
+.job,
+.button {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.button,
+.social a {
+  transform-origin: center;
+  transition-duration: 100ms;
+}
+
+.header,
+.avatar-image,
+.title,
+.job,
+.hr,
+.description,
+.contact,
+.social li {
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0, 0.5, 0, 1);
+  animation-fill-mode: both;
+}
+
+/* 3. Specific */
+.main-container {
+  min-height: calc(100vh - 3.25rem);
+}
+
+.main-content {
+  display: flex;
+}
+
+.nav {
+  color: #ffffff;
+  min-height: 3.25rem;
+}
+.nav-label {
+  align-items: center;
+  display: flex;
+  height: 10px;
+  margin: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  width: 15px;
+}
+.nav-label::before {
+  bottom: -5px;
+  content: "";
+  left: -5px;
+  right: -5px;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+  top: -5px;
+  z-index: -1;
+}
+.nav-label span {
+  background: currentColor;
+  display: block;
+  height: 2px;
+  transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+  width: 100%;
+}
+.nav-label span::before, .nav-label span::after {
+  background: currentColor;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transition: transform 0.4s cubic-bezier(0.75, 0, 0.25, 1), top 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.nav-label span::before {
+  top: 0;
+}
+.nav-label span::after {
+  top: calc(100% - 2px);
+}
+.nav-input {
+  -webkit-appearance: none;
+  height: 0;
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.nav-input:focus + label {
+  color: #ffffff;
+}
+.nav-input:focus + label::before {
+  opacity: 1;
+}
+.nav-input:checked + label {
+  color: white;
+  height: 10px;
+}
+.nav-input:checked + label span {
+  transform: rotate(45deg);
+}
+.nav-input:checked + label span::before, .nav-input:checked + label span::after {
+  top: calc(50% - 1px);
+  transition: transform 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), top 0.4s cubic-bezier(0.75, 0, 0.25, 1), background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.nav-input:checked + label span::after {
+  transform: rotate(90deg);
+}
+.nav-input:checked ~ ul {
+  z-index: 9;
+  transform: none;
+  transition: 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.nav-list {
+  background: #00cec9;
+  bottom: 0;
+  font-size: 4rem;
+  text-align: center;
+  overflow-y: unset;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  transform: translate(120vw) rotate(45deg);
+  transition: 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+  z-index: -1;
+  width: 100%;
+}
+.nav-item {
+  list-style: none;
+}
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.nav-link:hover, .nav-link:focus {
+  background-color: transparent;
+  color: #208479;
+  text-decoration: underline;
+}
+.nav-link:active {
+  background-color: transparent;
+  color: #29a598;
+  text-decoration: underline;
+}
+
+.avatar {
+  max-height: 20rem;
+  max-width: 20rem;
+}
+
+.avatar-image {
+  animation-duration: 750ms;
+  animation-timing-function: cubic-bezier(0, 0.5, 0.25, 1.25);
+}
+
+.job {
+  color: #fdcb6e;
+  font-size: 0.75rem;
+}
+
+.hr {
+  background-color: #e17055;
+  border: none;
+  content: "";
+  height: 1px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  transform-origin: center left;
+  width: 4rem;
+}
+
+.description {
+  font-size: 1rem;
+}
+
+.contact {
+  display: inline-block;
+  margin-top: 1.5rem;
+  vertical-align: top;
+}
+
+.button {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  font-size: 0.875rem;
+  padding: 1.25em 2em;
+  text-shadow: none;
+  transition-property: box-shadow, transform;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+.button:hover {
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  transform: scale(1) translateY(-4px);
+}
+
+.button:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  transform: scale(0.98) translateY(-2px);
+}
+
+.social {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+.social li {
+  height: 2rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  width: 2rem;
+}
+
+.social a {
+  align-items: center;
+  display: flex;
+  font-size: 1.5rem;
+  height: 2rem;
+  justify-content: center;
+  opacity: 0.5;
+  transition-property: opacity, transform;
+  width: 2rem;
+  will-change: opacity, transform;
+}
+
+.social a:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.social a:active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.social li {
+  animation-duration: 500ms;
+  animation-name: slideUp;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1.5);
+}
+
+/* 4. Responsiveness */
+@media screen and (max-width: 799px) {
+  .main-content {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .avatar {
+    margin-bottom: 1rem;
+    width: 70%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .nav {
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+  }
+  .nav-label {
+    display: none;
+  }
+  .nav-list {
+    display: flex;
+    font-size: initial;
+    position: absolute;
+    transform: none;
+    justify-content: flex-end;
+  }
+  .nav-item {
+    list-style: none;
+  }
+  .nav-link {
+    padding: 10px 12px;
+  }
+
+  .avatar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 20rem;
+    margin-left: 4rem;
+    order: 2;
+    width: 20rem;
+  }
+
+  .about {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+/* 5. Animating */
+.avatar-image {
+  opacity: 0;
+}
+
+.header-4 {
+  animation-name: zoomOut;
+}
+
+.contact {
+  animation-name: bounceIn;
+}
+
+.image.is-loaded .avatar-image {
+  animation-name: picImage;
+}
+
+.title {
+  animation-name: slideDown;
+}
+
+.job {
+  animation-name: slideUp;
+}
+
+.hr {
+  animation-name: fillUp;
+}
+
+.description {
+  animation-name: slideUp;
+}
+
+.header {
+  animation-delay: 2s;
+}
+
+.title {
+  animation-delay: 100ms;
+}
+
+.job {
+  animation-delay: 200ms;
+}
+
+.hr {
+  animation-delay: 300ms;
+}
+
+.description {
+  animation-delay: 400ms;
+}
+
+.avatar-image {
+  animation-delay: 500ms;
+}
+
+.contact {
+  animation-delay: 600ms;
+}
+
+.social li:nth-child(1) {
+  animation-delay: 800ms;
+}
+
+.social li:nth-child(2) {
+  animation-delay: 900ms;
+}
+
+.social li:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.social li:nth-child(4) {
+  animation-delay: 1.1s;
+}
+
+.social li:nth-child(5) {
+  animation-delay: 1.2s;
+}

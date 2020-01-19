@@ -377,7 +377,7 @@ span {
 }
 
 strong {
-  color: #636e72;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -411,7 +411,7 @@ table th:not([align]) {
   text-align: left;
 }
 table th {
-  color: #636e72;
+  color: #ffffff;
 }
 
 .is-clearfix::after {
@@ -1524,11 +1524,11 @@ a.box:active {
 }
 .button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
   background-color: #00cec9;
-  color: #636e72;
+  color: #ffffff;
 }
 .button.is-text:active, .button.is-text.is-active {
   background-color: #00b5b0;
-  color: #636e72;
+  color: #ffffff;
 }
 .button.is-text[disabled], fieldset[disabled] .button.is-text {
   background-color: transparent;
@@ -2619,7 +2619,7 @@ a.box:active {
 .content h4,
 .content h5,
 .content h6 {
-  color: #636e72;
+  color: #ffffff;
   font-weight: 600;
   line-height: 1.125;
 }
@@ -2735,7 +2735,7 @@ a.box:active {
   vertical-align: top;
 }
 .content table th {
-  color: #636e72;
+  color: #ffffff;
 }
 .content table th:not([align]) {
   text-align: left;
@@ -2743,12 +2743,12 @@ a.box:active {
 .content table thead td,
 .content table thead th {
   border-width: 0 0 2px;
-  color: #636e72;
+  color: #ffffff;
 }
 .content table tfoot td,
 .content table tfoot th {
   border-width: 2px 0 0;
-  color: #636e72;
+  color: #ffffff;
 }
 .content table tbody tr:last-child td,
 .content table tbody tr:last-child th {
@@ -3148,7 +3148,7 @@ a.box:active {
 }
 .table {
   background-color: #202833;
-  color: #636e72;
+  color: #ffffff;
 }
 .table td,
 .table th {
@@ -3234,7 +3234,7 @@ a.box:active {
   color: currentColor;
 }
 .table th {
-  color: #636e72;
+  color: #ffffff;
 }
 .table th:not([align]) {
   text-align: left;
@@ -3258,7 +3258,7 @@ a.box:active {
 .table thead td,
 .table thead th {
   border-width: 0 0 2px;
-  color: #636e72;
+  color: #ffffff;
 }
 .table tfoot {
   background-color: transparent;
@@ -3266,7 +3266,7 @@ a.box:active {
 .table tfoot td,
 .table tfoot th {
   border-width: 2px 0 0;
-  color: #636e72;
+  color: #ffffff;
 }
 .table tbody {
   background-color: transparent;
@@ -3528,7 +3528,7 @@ a.tag:hover {
 }
 
 .title {
-  color: #636e72;
+  color: #ffffff;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
@@ -3572,7 +3572,7 @@ a.tag:hover {
   line-height: 1.25;
 }
 .subtitle strong {
-  color: #636e72;
+  color: #ffffff;
   font-weight: 600;
 }
 .subtitle:not(.is-spaced) + .title {
@@ -3638,19 +3638,19 @@ a.tag:hover {
   background-color: #202833;
   border-color: #202833;
   border-radius: 4px;
-  color: #636e72;
+  color: #ffffff;
 }
 .select select::-moz-placeholder, .textarea::-moz-placeholder, .input::-moz-placeholder {
-  color: rgba(99, 110, 114, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 .select select::-webkit-input-placeholder, .textarea::-webkit-input-placeholder, .input::-webkit-input-placeholder {
-  color: rgba(99, 110, 114, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 .select select:-moz-placeholder, .textarea:-moz-placeholder, .input:-moz-placeholder {
-  color: rgba(99, 110, 114, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 .select select:-ms-input-placeholder, .textarea:-ms-input-placeholder, .input:-ms-input-placeholder {
-  color: rgba(99, 110, 114, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 .select select:hover, .textarea:hover, .input:hover, .select select.is-hovered, .is-hovered.textarea, .is-hovered.input {
   border-color: #81ecec;
@@ -3806,7 +3806,7 @@ a.tag:hover {
   cursor: pointer;
 }
 .radio:hover, .checkbox:hover {
-  color: #636e72;
+  color: #ffffff;
 }
 [disabled].radio, [disabled].checkbox, fieldset[disabled] .radio, fieldset[disabled] .checkbox {
   color: #dfe6e9;
@@ -3859,7 +3859,7 @@ a.tag:hover {
   padding: 0.5em 1em;
 }
 .select:not(.is-multiple):not(.is-loading):hover::after {
-  border-color: #636e72;
+  border-color: #ffffff;
 }
 .select.is-white:not(:hover)::after {
   border-color: #ffffff;
@@ -4318,14 +4318,14 @@ a.tag:hover {
 }
 .file-label:hover .file-cta {
   background-color: #030303;
-  color: #636e72;
+  color: #ffffff;
 }
 .file-label:hover .file-name {
   border-color: #00c1bd;
 }
 .file-label:active .file-cta {
   background-color: black;
-  color: #636e72;
+  color: #ffffff;
 }
 .file-label:active .file-name {
   border-color: #00b5b0;
@@ -4380,7 +4380,7 @@ a.tag:hover {
 }
 
 .label {
-  color: #636e72;
+  color: #ffffff;
   display: block;
   font-size: 1rem;
   font-weight: 700;
@@ -4688,7 +4688,7 @@ a.tag:hover {
   padding-left: 0;
 }
 .breadcrumb li.is-active a {
-  color: #636e72;
+  color: #ffffff;
   cursor: default;
   pointer-events: none;
 }
@@ -4756,7 +4756,7 @@ a.tag:hover {
 
 .card-header-title {
   align-items: center;
-  color: #636e72;
+  color: #ffffff;
   display: flex;
   flex-grow: 1;
   font-weight: 700;
@@ -5095,7 +5095,7 @@ a.list-item {
 }
 .menu-list a:hover {
   background-color: #00cec9;
-  color: #636e72;
+  color: #ffffff;
 }
 .menu-list a.is-active {
   background-color: #00cec9;
@@ -5356,7 +5356,7 @@ a.list-item {
 }
 
 .modal-card-title {
-  color: #636e72;
+  color: #ffffff;
   flex-grow: 1;
   flex-shrink: 0;
   font-size: 1.5rem;
@@ -6441,7 +6441,7 @@ body.has-spaced-navbar-fixed-bottom {
 .pagination-next,
 .pagination-link {
   border-color: #00cec9;
-  color: #636e72;
+  color: #ffffff;
   min-width: 2.5em;
 }
 .pagination-previous:hover,
@@ -6665,7 +6665,7 @@ body.has-spaced-navbar-fixed-bottom {
 .panel-heading {
   background-color: #81ecec;
   border-radius: 6px 6px 0 0;
-  color: #636e72;
+  color: #ffffff;
   font-size: 1.25em;
   font-weight: 700;
   line-height: 1.25;
@@ -6697,7 +6697,7 @@ body.has-spaced-navbar-fixed-bottom {
 
 .panel-block {
   align-items: center;
-  color: #636e72;
+  color: #ffffff;
   display: flex;
   justify-content: flex-start;
   padding: 0.5em 0.75em;
@@ -6773,8 +6773,8 @@ label.panel-block:hover {
   vertical-align: top;
 }
 .tabs a:hover {
-  border-bottom-color: #636e72;
-  color: #636e72;
+  border-bottom-color: #ffffff;
+  color: #ffffff;
 }
 .tabs li {
   display: block;
@@ -9325,7 +9325,7 @@ label.panel-block:hover {
 }
 
 .section {
-  padding: 3rem 1.5rem;
+  padding: 1.5rem;
 }
 @media screen and (min-width: 1024px) {
   .section.is-medium {

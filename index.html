@@ -10,64 +10,120 @@
         <!-- <link rel="stylesheet" type="text/css" href="css/minireset.min.css"> -->
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/animations.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/mybulma.css">
         <script defer type="text/javascript" src="js/main.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
     </head>
 
     <body>
-        <div class="container is-fluid">
-            <header class="header">
-                <nav class="navbar">
-                    NAVBAR
-                </nav>
-            </header>
+        <nav class="nav">
+            <input type="checkbox" id="trigger" class="nav-input"/>
+            <label class="nav-label" aria-label="open main navigation" for="trigger"><span></span></label>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Work</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gallery</a>
+                </li>
+            </ul>
+        </nav>
 
-            <aside class="avatar">
-                <figure id="picture" class="image">
-                    <img id="pictureImage" class="is-rounded avatar-image" src="images/dina.png" srcset="images/dina.png 1x,
-images/dina@2x.png 2x,
-images/dina@3x.png 3x" alt="Portrait of Dina" width="320" height="320">
-                </figure>
-            </aside>
-
-            <main class="profile">
-                <h1 class="title">
-                    Hi, <span class="has-text-link">I'm Dina Setiana</span>
-                </h1>
-                <p class="subtitle job">
-                    Software Developer
-                </p>
-                <hr class="hr">
-                <div class="description">
-                    <p>
-                        I'm a software engineer based in Indonesia. Currently staying and working in Japan. I'm always strive hard to learn and do my best at everything.
+        <header class="section main-container">
+            <div class="main-content">
+                <aside class="avatar">
+                    <figure id="picture" class="image">
+                        <img id="pictureImage" class="is-rounded avatar-image" src="images/dina.png" srcset="images/dina.png 1x,
+    images/dina@2x.png 2x,
+    images/dina@3x.png 3x" alt="Portrait of Dina" width="320" height="320">
+                    </figure>
+                </aside>
+    
+                <main class="profile">
+                    <h1 class="title">
+                        Hi, <span class="has-text-link">I'm Dina Setiana</span>
+                    </h1>
+                    <p class="job">
+                        Software Developer
                     </p>
+                    <hr class="hr">
+                    <div class="description">
+                        <p>
+                            I'm a software engineer based in Japan.
+                        </p>
+                    </div>
+                    <div class="contact">
+                        <a class="button" href="mailto:wenning.me@gmail.com">
+                            Get in touch
+                        </a>
+                    </div>
+                    <ul class="social">
+                        <li>
+                            <a href="https://twitter.com/w_ningz">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/WenNingz">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/dina-setiana-26091994/">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </main>
+            </div>
+            
+        </header>
+        <section id="about"  class="section">
+            <div class="container">
+                <h1 class="title has-text-centered">About Me</h1>
+                <h2 class="subtitle">
+                  A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+                </h2>
+                <div class="about-text">
+                    <h4>Hello there! I'm a front-end developer and aspiring UX designer based in Chicago.</h4>
+                    <p>Having spent a large chunk of my life in art school, I've finally found my passion at the
+                        crossroads of design and technology. I started off as an undergrad in industrial design,
+                        then worked some graphic design gigs, and later went back to school for web design and new
+                        media. The one lesson that stood out throughout this journey was the importance of the end
+                        user. Whether a physical or digital product, its purpose needs to be obvious, and the
+                        product itself has to be easy to use. So no matter what I'm working on, I always have the
+                        user in mind and try my hardest to create an enjoyable experience for them.</p>
+                    <p>Currently, I spend most of my time designing websites and marketing material for small
+                        businesses and participating in the <a href="https://goo.gl/jhil8F" target="_blank">#100DaysOfCode</a> challenge to
+                        keep my skills sharp. When I'm not busy,
+                        you can find me obsessing over food, cats, skincare, and video games, or working on one of
+                        my many hobbies like playing the ukulele or crocheting. I tend to switch things up every few
+                        months, so if you want to know what I'm up to, just <a class="scroll" href="#follow-me">follow me!</a> :)</p>
                 </div>
-                <div class="contact">
-                    <a class="button" href="mailto:wenning.me@gmail.com">
-                        Get in touch
-                    </a>
-                </div>
-                <ul class="social">
-                    <li>
-                        <a href="https://twitter.com/w_ningz">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/WenNingz">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/dina-setiana-26091994/">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                </ul>
-            </main>
-        </div>
+              </div>
+        </section>
+        <section id="experince">
+            My Experince
+        </section>
+        <section id="work">
+            <h1>My Work</h1>
+            <div class="work-text">
+                <button class="btn td-btn outline green mt-30" data-toggle="modal" data-target="#resumeModal">View my Resume</button>
+            </div>
+        </section>
+        <section id="contact">
+            <h1 class="mb-30">Like what you see?</h1>
+            <button class="" data-toggle="modal" data-target="#contactModal">Send me a message!</button>
+        </section>
 
         <noscript>
             <style type="text/css">

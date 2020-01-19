@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+// sass --no-source-map --watch app/mybulma/sass/style.scss:css/style.css
+// sass --no-source-map --watch app/mybulma/sass:css
+
+
+@import "./custom-variables.scss";
+
+
+
+$primary: $black-light;
+$info: $blue;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+$light: $white;
+$dark: $black;
+
+
+// General colors
+$scheme-invert: $white;
+$scheme-invert-bis: $grey-light;
+$scheme-invert-ter: $black-dark;
+$scheme-main: $black;
+$scheme-main-bis: $black-light;
+$scheme-main-ter: $black-dark;
+
+$background: $cyan;
+
+$border: $cyan;
+$border-hover: $cyan-light;
+$border-light: $cyan-light;
+$border-light-hover: $cyan-light;
+
+// $body-background-color: $scheme-invert;
+
+// Text colors
+$text: $grey;
+$text-light: $grey-light;
+$text-strong: $white;
+
+$has-text-white: $white;
+$has-text-black: $black;
+$has-text-light: $grey;
+$has-text-dark: $black-dark;
+$has-text-primary: $cyan;
+$has-text-info: $blue;
+$has-text-link: $cyan-light;
+$has-text-success: $green;
+$has-text-warning: $yellow;
+$has-text-danger: $red;
+$has-text-black-bis: $black-light;
+$has-text-black-ter: $black-dark;
+// $has-text-grey-darker: hsl(0, 0%, 21%);
+$has-text-grey-dark: $grey-dark;
+$has-text-grey: $grey;
+$has-text-grey-light: $grey-light;
+// $has-text-grey-lighter: hsl(0, 0%, 86%);
+// $has-text-white-ter: hsl(0, 0%, 96%);
+// $has-text-white-bis: hsl(0, 0%, 98%);
+
+// Link colors
+$link: $cyan;
+$link-visited: $blue;
+
+$link-hover: $grey;
+$link-hover-border: $grey;
+
+$link-focus: $cyan-light;
+$link-focus-border: $cyan-light;
+
+$link-active: $cyan-light;
+$link-active-border: $cyan-light;
+
+// Generic
+$input-border-color: $black;
+$control-border-width: 1px;
+
+$body-font-size: $default-font-size;
+// $button-background-color: $scheme-invert;
+$button-color: $cyan;
+// $button-hover-color: $cyan-light;
+
+$section-padding: 1.5rem;
+
+
+
+
+@import "../bulma-0.8.0/bulma.sass";
