@@ -10,4 +10,8 @@ export default class Helper {
       (max - min) * Math.abs(Math.sin(factor));
     return min + opacityIncrement;
   }
+
+  static degreesToRads(degrees) {
+    return degrees / 180 * Math.PI;
+  }
 }

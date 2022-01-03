@@ -25,73 +25,206 @@ document.addEventListener('DOMContentLoaded', function () {
   loadImage('pictureImage', 'picture');
 });
 
-// Background
-const MAX_STAR_RADIUS = 1.5;
-const backgroundColor = "#202833"
-const background = document.querySelector("#starry-canvas");
-const ctx = background.getContext("2d");
-const width = window.innerWidth;
-const height = window.innerHeight;
+const particle = {
+  x: 0,
+  y: 0,
+  vx: 0,
+  vy: 0,
+  r: 0,
+  rChange: 0.015,
+  color: "#ffffff",
 
-background.width = width;
-background.height = height
+  create: function (x, y, speed, direction, r) {
+    const obj = Object.create(this);
+    obj.x = x;
+    obj.y = y;
+    obj.vx = Math.cos(direction) * speed;
+    obj.vy = Math.sin(direction) * speed;
+    obj.r = r || 0;
+    obj.color = this.randomColor();
+    return obj;
+  },
 
-function createStars(spacing) {
-  const startArr = [];
+  getSpeed: function () {
+    return Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+  },
 
-  for (let x = 0; x < width; x += spacing) {
-    for (let y = 0; y < height; y += spacing) {
-      const star = {
-        x: x + Helper.randomInt(spacing),
-        y: y + Helper.randomInt(spacing),
-        r: Math.random() * MAX_STAR_RADIUS,
-      };
-      startArr.push(star);
+  setSpeed: function (speed) {
+    var heading = this.getHeading();
+    this.vx = Math.cos(heading) * speed;
+    this.vy = Math.sin(heading) * speed;
+  },
+
+  getHeading: function () {
+    return Math.atan2(this.vy, this.vx);
+  },
+
+  setHeading: function (heading) {
+    var speed = this.getSpeed();
+    this.vx = Math.cos(heading) * speed;
+    this.vy = Math.sin(heading) * speed;
+  },
+
+  randomColor: function () {
+    const arrColors = ["ffffff", "ffecd3", "bfcfff", "00cec9"];
+    return "#" + arrColors[Helper.randomInt(arrColors.length - 1, 1)];
+  },
+
+  update: function () {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.r > MAX_STAR_RADIUS + 0.3 || this.r < .8) {
+      this.rChange = - this.rChange;
     }
+    this.r += this.rChange;
   }
-  return startArr;
 }
 
-function fillCircle(x, y, r, fillStyle) {
+function createStars(spacing) {
+  for (let x = 0; x < C_WIDTH; x += spacing) {
+    for (let y = 0; y < C_HEIGHT; y += spacing) {
+      const star = particle.create(x + Helper.randomInt(spacing), y + Helper.randomInt(spacing), 0, 0, Math.random() * MAX_STAR_RADIUS + .25);
+      stars.push(star);
+    }
+  }
+}
+
+function drawStar(star) {
   ctx.beginPath();
-  ctx.fillStyle = fillStyle;
-  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2, false);
+  ctx.shadowBlur = 8;
+  ctx.shadowColor = "white";
+  ctx.fillStyle = star.color;
   ctx.fill();
 }
 
-function render(timestamp) {
-  now = timestamp;
-  elapsed = now - then;
+function createShootingStar() {
+  const shootingStarSpeed = {
+    min: 15,
+    max: 20
+  },
+    starsAngle = 145;
+  const shootingStar = particle.create(
+    Helper.randomInt(C_WIDTH, C_WIDTH / 2),
+    Helper.randomInt(C_HEIGHT / 2),
+    0, 0, 0
+  )
+  shootingStar.setSpeed(Helper.randomInt(shootingStarSpeed.max, shootingStarSpeed.min));
+  shootingStar.opacity = 0;
+  shootingStar.trailLengthDelta = 0;
+  shootingStar.isSpawning = true;
+  shootingStar.isDying = false;
+  shootingStar.setHeading(Helper.degreesToRads(starsAngle));
 
-  // if enough time has elapsed, draw the next frame
-  if (elapsed > fpsInterval) {
-    // Get ready for next frame by setting then=now, but...
-    // Also, adjust for fpsInterval not being multiple of 16.67
-    then = now - (elapsed % fpsInterval);
-
-    ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, width, height);
-    stars.forEach((star, i) => {
-      const factor = counter * i;
-      let opacity = 1;
-      if (i % skipFlickerN) {
-        opacity = Helper.getOpacity(factor);
-      }
-      // console.log("opacity", opacity);
-
-      // factor will be a different number for every star
-      const { x, y, r } = star;
-      fillCircle(x, y, r, `rgba(255, 255, 255, ${opacity}`);
-    });
-    counter++;
-  }
-  requestAnimationFrame(render);
+  shootingStars.push(shootingStar);
+  return shootingStars;
 }
 
-let counter = 0;
-let fpsInterval = 1000 / 2.5;
-let then = window.performance.now();
-let now, elapsed = null;
-const skipFlickerN = Helper.randomInt(4, 8);
-const stars = createStars(30);
-render();
+function drawShootingStar(p) {
+  const { x, y, opacity } = p;
+  const currentTrailLength = (MAX_TRAIL_LEN * p.trailLengthDelta),
+    pos = lineToAngle(x, y, -currentTrailLength, p.getHeading());
+
+  ctx.fillStyle = "rgba(255, 255, 255, " + opacity + ")";
+  const starLength = 5;
+  ctx.beginPath();
+  ctx.moveTo(x - 1, y + 1);
+
+  ctx.lineTo(x, y + starLength);
+  ctx.lineTo(x + 1, y + 1);
+
+  ctx.lineTo(x + starLength, y);
+  ctx.lineTo(x + 1, y - 1);
+
+  ctx.lineTo(x, y + 1);
+  ctx.lineTo(x, y - starLength);
+
+  ctx.lineTo(x - 1, y - 1);
+  ctx.lineTo(x - starLength, y);
+
+  ctx.lineTo(x - 1, y + 1);
+  ctx.lineTo(x - starLength, y);
+
+  ctx.closePath();
+  ctx.fill();
+
+  //trail
+  ctx.fillStyle = "rgba(0, 206, 201, " + opacity + ")";
+  ctx.beginPath();
+  ctx.moveTo(x - 1, y - 1);
+  ctx.lineTo(pos.x, pos.y);
+  ctx.lineTo(x + 1, y + 1);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function lineToAngle(x1, y1, length, radians) {
+  var x2 = x1 + length * Math.cos(radians),
+    y2 = y1 + length * Math.sin(radians);
+  return { x: x2, y: y2 };
+}
+
+const canvas = document.querySelector("#bg-canvas");
+const ctx = canvas.getContext("2d");
+
+const C_WIDTH = canvas.width = window.innerWidth;
+const C_HEIGHT = canvas.height = window.innerHeight;
+
+const MAX_STAR_RADIUS = 1,
+  MAX_TRAIL_LEN = 300,
+  TRAIL_LENGTH_DELTA = 0.01,
+  OPACITY_DELTA = 0.01;
+
+const stars = [];
+const shootingStars = [];
+
+function animate() {
+  ctx.clearRect(0, 0, C_WIDTH, C_HEIGHT);
+
+  stars.forEach(star => {
+    star.update();
+    drawStar(star);
+  });
+
+  shootingStars.forEach((shootingStar, i) => {
+    if (shootingStar.isSpawning) {
+      shootingStar.opacity += OPACITY_DELTA;
+      if (shootingStar.opacity >= 1.0) {
+        shootingStar.isSpawning = false;
+        shootingStar.isDying = true;
+      }
+    }
+    if (shootingStar.isDying) {
+      shootingStar.opacity -= OPACITY_DELTA;
+      if (shootingStar.opacity <= 0.0) {
+        shootingStar.isDying = false;
+        shootingStar.isDead = true;
+      }
+    }
+    shootingStar.trailLengthDelta += TRAIL_LENGTH_DELTA;
+    shootingStar.x += shootingStar.vx;
+    shootingStar.y += shootingStar.vy;
+    if (shootingStar.opacity > 0.0) {
+      drawShootingStar(shootingStar);
+    }
+    if (shootingStar.isDead) {
+      shootingStars.splice(i, 1);
+    }
+  });
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('blur', () => {
+  paused = true;
+});
+window.addEventListener('focus', () => {
+  paused = false;
+});
+
+let paused = false;
+createStars(45);
+setInterval(() => {
+  if (paused) return;
+  createShootingStar();
+}, 2000);
+animate();
