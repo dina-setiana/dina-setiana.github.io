@@ -2,9 +2,9 @@
 import Helper from './helper.js';
 
 function loadImage(id, targetId) {
-  var el = document.getElementById(id);
-  var targetEl = targetId ? document.getElementById(targetId) : el;
-  var imageToLoad;
+  const el = document.getElementById(id);
+  const targetEl = targetId ? document.getElementById(targetId) : el;
+  let imageToLoad;
   if (el.dataset.image) {
     imageToLoad = el.dataset.image;
   } else if (typeof el.currentSrc === 'undefined') {
@@ -13,7 +13,7 @@ function loadImage(id, targetId) {
     imageToLoad = el.currentSrc;
   }
   if (imageToLoad) {
-    var img = new Image();
+    const img = new Image();
     img.src = imageToLoad;
     img.onload = function () {
       targetEl.classList.add('is-loaded');
@@ -50,7 +50,7 @@ const particle = {
   },
 
   setSpeed: function (speed) {
-    var heading = this.getHeading();
+    const heading = this.getHeading();
     this.vx = Math.cos(heading) * speed;
     this.vy = Math.sin(heading) * speed;
   },
@@ -60,7 +60,7 @@ const particle = {
   },
 
   setHeading: function (heading) {
-    var speed = this.getSpeed();
+    const speed = this.getSpeed();
     this.vx = Math.cos(heading) * speed;
     this.vy = Math.sin(heading) * speed;
   },
@@ -159,7 +159,7 @@ function drawShootingStar(p) {
 }
 
 function lineToAngle(x1, y1, length, radians) {
-  var x2 = x1 + length * Math.cos(radians),
+  const x2 = x1 + length * Math.cos(radians),
     y2 = y1 + length * Math.sin(radians);
   return { x: x2, y: y2 };
 }
