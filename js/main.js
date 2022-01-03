@@ -214,17 +214,19 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-window.addEventListener('blur', () => {
-  paused = true;
-});
-window.addEventListener('focus', () => {
-  paused = false;
-});
+if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  window.addEventListener('blur', () => {
+    paused = true;
+  });
+  window.addEventListener('focus', () => {
+    paused = false;
+  });
 
-let paused = false;
-createStars(45);
-setInterval(() => {
-  if (paused) return;
-  createShootingStar();
-}, 2000);
-animate();
+  let paused = false;
+  createStars(45);
+  setInterval(() => {
+    if (paused) return;
+    createShootingStar();
+  }, 2000);
+  animate();
+}
