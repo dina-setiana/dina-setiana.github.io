@@ -164,7 +164,7 @@ function lineToAngle(x1, y1, length, radians) {
   return { x: x2, y: y2 };
 }
 
-const canvas = document.querySelector("#bg-canvas");
+const canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
 const C_WIDTH = canvas.width = window.innerWidth;
